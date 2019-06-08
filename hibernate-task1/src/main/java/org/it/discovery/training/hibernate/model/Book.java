@@ -15,7 +15,16 @@ import javax.persistence.*;
 @Getter @Setter
 @Entity
 @Table(name = "BOOK")
+@NamedQuery(name = Book.FIND_ALL, query = "FROM Book")
+@NamedQuery(name = Book.FIND_BY_NAME, query = "FROM Book WHERE name=:name")
+@NamedQuery(name = Book.FIND_WITH_HITS, query = "FROM Book")
 public class Book extends BaseEntity {
+	public static final String FIND_ALL = "Book.findAll";
+
+	public static final String FIND_BY_NAME = "Book.findByName";
+
+	public static final String FIND_WITH_HITS = "Book.findWithHits";
+
 	@Column(name = "NAME", nullable = false)
 	private String name;
 

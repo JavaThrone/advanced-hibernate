@@ -27,7 +27,7 @@ public interface BookRepository {
 
 	/**
 	 * Returns all the books where number of pages is greater than pages parameter
-	 * @param name
+	 * @param pages
 	 * @return
 	 */
 	List<Book> findWithMorePages(int pages);
