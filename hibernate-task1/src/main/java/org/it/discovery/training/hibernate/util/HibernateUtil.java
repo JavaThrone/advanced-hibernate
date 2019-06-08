@@ -9,6 +9,9 @@ import org.hibernate.SessionFactory;
 import org.hibernate.boot.MetadataSources;
 import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
 import org.hibernate.service.ServiceRegistry;
+import org.it.discovery.training.hibernate.model.Book;
+import org.it.discovery.training.hibernate.model.Hit;
+import org.it.discovery.training.hibernate.model.Person;
 import org.it.discovery.training.hibernate.model.Publisher;
 
 public class HibernateUtil {
@@ -23,6 +26,9 @@ public class HibernateUtil {
 			ServiceRegistry registry = new StandardServiceRegistryBuilder().applySettings(loadProperties()).build();
 			MetadataSources sources = new MetadataSources(registry);
 			sources.addAnnotatedClass(Publisher.class);
+			sources.addAnnotatedClass(Book.class);
+			sources.addAnnotatedClass(Person.class);
+			sources.addAnnotatedClass(Hit.class);
 
 			return sources.buildMetadata().buildSessionFactory();
 		} catch (HibernateException ex) {
