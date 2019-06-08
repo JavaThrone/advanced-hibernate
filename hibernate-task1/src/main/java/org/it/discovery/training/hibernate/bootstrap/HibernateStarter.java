@@ -2,10 +2,7 @@ package org.it.discovery.training.hibernate.bootstrap;
 
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
-import org.it.discovery.training.hibernate.model.Book;
-import org.it.discovery.training.hibernate.model.Hit;
-import org.it.discovery.training.hibernate.model.Person;
-import org.it.discovery.training.hibernate.model.Publisher;
+import org.it.discovery.training.hibernate.model.*;
 import org.it.discovery.training.hibernate.repository.BookRepository;
 import org.it.discovery.training.hibernate.repository.hibernate.HibernateBookRepository;
 import org.it.discovery.training.hibernate.util.HibernateUtil;
@@ -52,16 +49,21 @@ public class HibernateStarter {
 
             books = bookRepository.findWithHits();
             System.out.println("Books with hits =" + books);
-//            session = factory.getCurrentSession();
-//            session.beginTransaction();
-//            Publisher publisher = new Publisher();
-//            publisher.setName("Apress");
-//            session.save(publisher);
-//            session.getTransaction().commit();
-//            session = factory.getCurrentSession();
-//            session.beginTransaction();
-//            Publisher publisher2 = session.get(Publisher.class, publisher.getId());
-//            session.getTransaction().commit();
+            session = factory.getCurrentSession();
+            session.beginTransaction();
+            Publisher publisher = new Publisher();
+            publisher.setName("Apress");
+            Address address = new Address();
+            address.setCity("Kyiv");
+            address.setStreet("V. Lobanovskogo");
+            address.setApt(123);
+            publisher.setAddress(address);
+            session.save(publisher);
+            session.getTransaction().commit();
+            session = factory.getCurrentSession();
+            session.beginTransaction();
+            Publisher publisher2 = session.get(Publisher.class, publisher.getId());
+            session.getTransaction().commit();
         } catch (Exception ex) {
             ex.printStackTrace();
             if (session != null) {

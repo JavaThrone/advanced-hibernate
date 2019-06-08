@@ -7,10 +7,7 @@ import lombok.Setter;
 import org.hibernate.annotations.Cache;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
 
-import javax.persistence.DiscriminatorValue;
-import javax.persistence.Entity;
-import javax.persistence.OneToMany;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 /**
  * Book publisher
@@ -26,6 +23,9 @@ public class Publisher extends BaseEntity{
 
 	@OneToMany(mappedBy = "publisher")
 	private List<Book> books;
+
+	@Embedded
+	private Address address;
 
 	public List<Book> getBooks() {
 		return books;
