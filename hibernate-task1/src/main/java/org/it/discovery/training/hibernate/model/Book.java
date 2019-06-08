@@ -17,7 +17,8 @@ import javax.persistence.*;
 @Table(name = "BOOK")
 @NamedQuery(name = Book.FIND_ALL, query = "FROM Book")
 @NamedQuery(name = Book.FIND_BY_NAME, query = "FROM Book WHERE name=:name")
-@NamedQuery(name = Book.FIND_WITH_HITS, query = "FROM Book")
+@NamedQuery(name = Book.FIND_WITH_HITS,
+		query = "FROM Book b inner join fetch b.hits h WHERE size(h) > 1")
 public class Book extends BaseEntity {
 	public static final String FIND_ALL = "Book.findAll";
 
@@ -46,7 +47,7 @@ public class Book extends BaseEntity {
 	 */
 	private int pages;
 
-	@OneToMany(mappedBy = "book")
+	@OneToMany(mappedBy = "book", cascade = CascadeType.ALL)
 	private List<Hit> hits;
 
 	public Person getAuthor() {

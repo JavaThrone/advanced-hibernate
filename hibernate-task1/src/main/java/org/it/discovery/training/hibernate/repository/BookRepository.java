@@ -20,7 +20,7 @@ public interface BookRepository {
 	List<Book> findWithName(String name);
 
 	/**
-	 * Returns all the books that has at least one hit
+	 * Returns all the books that has at least two hits
 	 * @return
 	 */
 	List<Book> findWithHits();

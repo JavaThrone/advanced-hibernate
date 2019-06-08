@@ -35,12 +35,43 @@ public class HibernateBookRepository implements BookRepository {
 
     @Override
     public List<Book> findWithName(String name) {
-        return null;
+
+        Session session = null;
+        try {
+            session = sessionFactory.getCurrentSession();
+            session.beginTransaction();
+            List<Book> books = session.createNamedQuery(Book.FIND_BY_NAME,
+                    Book.class)
+                    .setParameter("name", name)
+                    .getResultList();
+            session.getTransaction().commit();
+            return books;
+        } catch (Exception ex) {
+            if (session != null && session.getTransaction().isActive()) {
+                session.getTransaction().rollback();
+            }
+            throw new RuntimeException(ex);
+        }
     }
 
     @Override
     public List<Book> findWithHits() {
-        return null;
+
+        Session session = null;
+        try {
+            session = sessionFactory.getCurrentSession();
+            session.beginTransaction();
+            List<Book> books = session.createNamedQuery(Book.FIND_WITH_HITS,
+                    Book.class)
+                    .getResultList();
+            session.getTransaction().commit();
+            return books;
+        } catch (Exception ex) {
+            if (session != null && session.getTransaction().isActive()) {
+                session.getTransaction().rollback();
+            }
+            throw new RuntimeException(ex);
+        }
     }
 
     @Override
