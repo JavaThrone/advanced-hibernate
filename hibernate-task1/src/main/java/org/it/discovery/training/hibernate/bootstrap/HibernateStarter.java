@@ -21,14 +21,12 @@ public class HibernateStarter {
 			book.setName("Hibernate 3");
 			book.setAuthor(person);
 			session.persist(book);
-			Book book2 = new Book();
-			book2.setName("Hibernate 4");
-			book2.setAuthor(person);
-			session.persist(book2);
 			System.out.println(book.getId());
-			System.out.println(book2.getId());
-			System.out.println(person.getId());
-
+			session.getTransaction().commit();
+			session = factory.getCurrentSession();
+			session.beginTransaction();
+			Book book2 = session.load(Book.class, book.getId());
+			book2.setName("Gavin King++");
 			session.getTransaction().commit();
 		} catch (Exception ex) {
 			ex.printStackTrace();
