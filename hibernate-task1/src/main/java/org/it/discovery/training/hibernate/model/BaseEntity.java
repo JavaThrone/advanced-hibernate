@@ -8,9 +8,8 @@ import javax.persistence.*;
 import java.time.LocalDateTime;
 
 @Getter @Setter
-@Inheritance(strategy = InheritanceType.SINGLE_TABLE)
+@Inheritance(strategy = InheritanceType.JOINED)
 @Entity
-@DiscriminatorColumn
 public abstract class BaseEntity {
 	@Id
 	@GeneratedValue(generator = "counter")

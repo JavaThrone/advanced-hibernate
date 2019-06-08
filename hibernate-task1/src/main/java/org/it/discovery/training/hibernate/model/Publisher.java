@@ -21,7 +21,6 @@ import javax.persistence.Table;
 @Entity
 @Table(name = "PUBLISHER")
 @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
-@DiscriminatorValue("r")
 public class Publisher extends BaseEntity{
 	private String name;
 

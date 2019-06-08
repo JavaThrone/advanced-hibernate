@@ -4,7 +4,6 @@ import javax.persistence.*;
 import java.time.LocalDateTime;
 
 @Entity
-@DiscriminatorValue("h")
 public class Hit extends BaseEntity{
 	private String ip;
 	
