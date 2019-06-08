@@ -3,6 +3,7 @@ package org.it.discovery.training.hibernate.model;
 import javax.persistence.Entity;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.NamedQuery;
 import java.time.LocalDateTime;
 
 @Entity

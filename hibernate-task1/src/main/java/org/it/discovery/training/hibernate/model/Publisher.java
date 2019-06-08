@@ -4,9 +4,12 @@ import java.util.List;
 
 import lombok.Getter;
 import lombok.Setter;
+import org.hibernate.annotations.Cache;
+import org.hibernate.annotations.CacheConcurrencyStrategy;
 
 import javax.persistence.Entity;
 import javax.persistence.OneToMany;
+import javax.persistence.Table;
 
 /**
  * Book publisher
@@ -15,6 +18,8 @@ import javax.persistence.OneToMany;
  */
 @Getter @Setter
 @Entity
+@Table(name = "PUBLISHER")
+@Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
 public class Publisher extends BaseEntity{
 	private String name;
 
