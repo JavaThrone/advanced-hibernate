@@ -20,11 +20,11 @@ public class HibernateStarter {
 			Book book = new Book();
 			book.setName("Hibernate 3");
 			book.setAuthor(person);
-			session.save(book);
+			session.persist(book);
 			Book book2 = new Book();
 			book2.setName("Hibernate 4");
 			book2.setAuthor(person);
-			session.save(book2);
+			session.persist(book2);
 			System.out.println(book.getId());
 			System.out.println(book2.getId());
 			System.out.println(person.getId());

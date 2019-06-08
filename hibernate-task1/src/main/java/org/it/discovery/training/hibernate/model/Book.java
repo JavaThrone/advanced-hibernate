@@ -19,7 +19,7 @@ public class Book extends BaseEntity {
 	@Column(name = "NAME", nullable = false)
 	private String name;
 
-	@ManyToOne(cascade = CascadeType.ALL)
+	@ManyToOne(cascade = CascadeType.PERSIST)
 	@JoinColumn(name = "AUTHOR_ID",nullable = false)
 	private Person author;
 
