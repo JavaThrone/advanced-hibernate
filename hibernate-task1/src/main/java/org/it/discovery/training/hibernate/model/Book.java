@@ -19,6 +19,7 @@ import javax.persistence.*;
 @NamedQuery(name = Book.FIND_BY_NAME, query = "FROM Book WHERE name=:name")
 @NamedQuery(name = Book.FIND_WITH_HITS,
 		query = "FROM Book b inner join fetch b.hits h WHERE size(h) > 1")
+@DiscriminatorValue("b")
 public class Book extends BaseEntity {
 	public static final String FIND_ALL = "Book.findAll";
 

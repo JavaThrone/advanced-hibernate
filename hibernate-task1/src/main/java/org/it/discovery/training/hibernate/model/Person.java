@@ -16,6 +16,7 @@ import javax.persistence.OneToMany;
  */
 @Getter @Setter
 @Entity
+@DiscriminatorValue("p")
 public class Person extends BaseEntity {
 	private String name;
 	
