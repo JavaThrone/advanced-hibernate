@@ -1,12 +1,10 @@
 package org.it.discovery.training.hibernate.model;
 
-import javax.persistence.Entity;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
-import javax.persistence.NamedQuery;
+import javax.persistence.*;
 import java.time.LocalDateTime;
 
 @Entity
+@DiscriminatorValue("h")
 public class Hit extends BaseEntity{
 	private String ip;
 	

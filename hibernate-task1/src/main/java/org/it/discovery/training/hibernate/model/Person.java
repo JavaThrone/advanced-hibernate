@@ -5,6 +5,7 @@ import java.util.List;
 import lombok.Getter;
 import lombok.Setter;
 
+import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
 import javax.persistence.OneToMany;
 
@@ -15,6 +16,7 @@ import javax.persistence.OneToMany;
  */
 @Getter @Setter
 @Entity
+@DiscriminatorValue("p")
 public class Person extends BaseEntity {
 	private String name;
 	

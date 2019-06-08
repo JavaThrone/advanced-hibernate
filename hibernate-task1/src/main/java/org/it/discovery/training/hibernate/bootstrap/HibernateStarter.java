@@ -52,16 +52,16 @@ public class HibernateStarter {
 
             books = bookRepository.findWithHits();
             System.out.println("Books with hits =" + books);
-            session = factory.getCurrentSession();
-            session.beginTransaction();
-            Publisher publisher = new Publisher();
-            publisher.setName("Apress");
-            session.save(publisher);
-            session.getTransaction().commit();
-            session = factory.getCurrentSession();
-            session.beginTransaction();
-            Publisher publisher2 = session.get(Publisher.class, publisher.getId());
-            session.getTransaction().commit();
+//            session = factory.getCurrentSession();
+//            session.beginTransaction();
+//            Publisher publisher = new Publisher();
+//            publisher.setName("Apress");
+//            session.save(publisher);
+//            session.getTransaction().commit();
+//            session = factory.getCurrentSession();
+//            session.beginTransaction();
+//            Publisher publisher2 = session.get(Publisher.class, publisher.getId());
+//            session.getTransaction().commit();
         } catch (Exception ex) {
             ex.printStackTrace();
             if (session != null) {
