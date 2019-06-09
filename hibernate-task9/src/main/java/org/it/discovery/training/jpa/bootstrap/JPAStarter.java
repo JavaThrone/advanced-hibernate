@@ -3,11 +3,14 @@ package org.it.discovery.training.jpa.bootstrap;
 import org.it.discovery.training.hibernate.model.Book;
 import org.it.discovery.training.hibernate.model.Hit;
 import org.it.discovery.training.hibernate.model.Person;
+import org.it.discovery.training.hibernate.repository.PersonRepository;
+import org.it.discovery.training.hibernate.repository.jpql.JPQLPersonRepository;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 import java.util.ArrayList;
+import java.util.List;
 
 public class JPAStarter {
 
@@ -27,8 +30,16 @@ public class JPAStarter {
 			hit.setBook(book);
 			book.getHits().add(hit);
 			em.persist(book);
+			Person developer = new Person();
+			developer.setName("Sergey Morenets");
+			em.persist(developer);
 
 			em.getTransaction().commit();
+			PersonRepository personRepository =
+					new JPQLPersonRepository(emf);
+			List<Person> persons = personRepository
+					.findPersonWithoutBooks();
+			System.out.println("Persons without books = " + persons);
 		} catch (Exception ex) {
 			ex.printStackTrace();
 			if (em != null) {

@@ -39,7 +39,6 @@ public class HibernateUtil {
 
 	private static Properties loadProperties() {
 		try {
-
 			InputStream in = HibernateUtil.class.getClassLoader().getResourceAsStream("application.properties");
 			Properties properties = new Properties();
 			properties.load(in);
