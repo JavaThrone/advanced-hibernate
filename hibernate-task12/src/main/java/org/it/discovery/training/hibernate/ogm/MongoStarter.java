@@ -30,7 +30,9 @@ public class MongoStarter {
 		developer.setName("Sergey Morenets");
 		em.persist(developer);
 		em.getTransaction().commit();
-		
+
+		System.out.println("Books = " + em.createQuery("FROM Book").getResultList());
+
 		em.close();
 		emf.close();
 	}

@@ -4,6 +4,8 @@ import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
 import org.hibernate.annotations.Formula;
+import org.hibernate.ogm.datastore.document.options.AssociationStorage;
+import org.hibernate.ogm.datastore.document.options.AssociationStorageType;
 
 import javax.persistence.*;
 import java.util.List;
@@ -48,10 +50,11 @@ public class Book extends BaseEntity {
 	 */
 	private int totalPages;
 
-	@Formula("(SELECT count(h.id) FROM HIT h where h.BOOK_ID = id)")
+	//@Formula("(SELECT count(h.id) FROM HIT h where h.BOOK_ID = id)")
 	private int hitCount;
 
 	@OneToMany(mappedBy = "book", cascade = CascadeType.ALL)
+	@AssociationStorage(AssociationStorageType.IN_ENTITY)
 	private List<Hit> hits;
 
 	public Person getAuthor() {
