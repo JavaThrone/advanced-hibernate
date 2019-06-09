@@ -26,15 +26,15 @@ public interface BookRepository {
 	List<Book> findWithHits();
 
 	/**
-	 * Returns all the books where number of pages is greater than pages parameter
+	 * Returns all the books where number of totalPages is greater than totalPages parameter
 	 * @param pages
 	 * @return
 	 */
 	List<Book> findWithMorePages(int pages);
 	
 	/**
-	 * Returns all the books with specified name or pages.
-	 * Both parameters are optional. If name is null or pages = 0 we should
+	 * Returns all the books with specified name or totalPages.
+	 * Both parameters are optional. If name is null or totalPages = 0 we should
 	 * ignore them
 	 * @param name
 	 * @param pages
@@ -43,7 +43,7 @@ public interface BookRepository {
 	List<Book> searchBooks(String name, int pages);
 	
 	/**
-	 * Returns overall number of pages for all the books 
+	 * Returns overall number of totalPages for all the books
 	 * @return
 	 */
 	int findTotalPages();

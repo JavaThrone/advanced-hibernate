@@ -16,7 +16,7 @@ import javax.persistence.*;
  */
 @Getter @Setter
 @Entity
-@Table(name = "PUBLISHER")
+@Table
 @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
 public class Publisher extends BaseEntity{
 	private String name;

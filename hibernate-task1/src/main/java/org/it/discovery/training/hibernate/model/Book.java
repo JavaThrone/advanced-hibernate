@@ -14,7 +14,7 @@ import javax.persistence.*;
  */
 @Getter @Setter
 @Entity
-@Table(name = "BOOK")
+@Table
 @NamedQuery(name = Book.FIND_ALL, query = "FROM Book")
 @NamedQuery(name = Book.FIND_BY_NAME, query = "FROM Book WHERE name=:name")
 @NamedQuery(name = Book.FIND_WITH_HITS,
@@ -26,15 +26,15 @@ public class Book extends BaseEntity {
 
 	public static final String FIND_WITH_HITS = "Book.findWithHits";
 
-	@Column(name = "NAME", nullable = false)
+	@Column(nullable = false)
 	private String name;
 
 	@ManyToOne(cascade = CascadeType.PERSIST)
-	@JoinColumn(name = "AUTHOR_ID",nullable = false)
+	@JoinColumn(nullable = false)
 	private Person author;
 
 	@ManyToOne
-	@JoinColumn(name = "PUBLISHER_ID")
+	@JoinColumn
 	private Publisher publisher;
 	
 	/**
@@ -45,7 +45,7 @@ public class Book extends BaseEntity {
 	/**
 	 * Total number of pages
 	 */
-	private int pages;
+	private int totalPages;
 
 	@OneToMany(mappedBy = "book", cascade = CascadeType.ALL)
 	private List<Hit> hits;

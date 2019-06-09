@@ -20,7 +20,7 @@ public class Book extends BaseEntity {
 	private int year;
 	
 	/**
-	 * Total number of pages
+	 * Total number of totalPages
 	 */
 	private int pages;
 	
