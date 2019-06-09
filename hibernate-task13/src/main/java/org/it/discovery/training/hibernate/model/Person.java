@@ -1,5 +1,12 @@
 package org.it.discovery.training.hibernate.model;
 
+import lombok.Getter;
+import lombok.Setter;
+import lombok.ToString;
+
+import javax.persistence.Entity;
+import javax.persistence.NamedQuery;
+import javax.persistence.OneToMany;
 import java.util.List;
 
 /**
@@ -7,27 +14,22 @@ import java.util.List;
  * @author admin
  *
  */
+@Getter @Setter @ToString(exclude = "books")
+@Entity
+@NamedQuery(name = Person.QUERY_PERSONS_WITHOUT_BOOKS,
+query = "SELECT p FROM Person p WHERE p.books is empty")
 public class Person extends BaseEntity {
+	public static final String QUERY_PERSONS_WITHOUT_BOOKS = "Person.findWithoutBooks";
+
 	private String name;
 	
 	/**
 	 * Books that person has written
 	 */
+	@OneToMany(mappedBy = "author")
 	private List<Book> books;
-
-	public String getName() {
-		return name;
-	}
-
-	public void setName(String name) {
-		this.name = name;
-	}
 
 	public List<Book> getBooks() {
 		return books;
-	}
-
-	public void setBooks(List<Book> books) {
-		this.books = books;
 	}
 }

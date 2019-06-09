@@ -1,8 +1,8 @@
 package org.it.discovery.training.hibernate.repository;
 
-import java.util.List;
-
 import org.it.discovery.training.hibernate.model.Book;
+
+import java.util.List;
 
 public interface BookRepository {
 	
@@ -53,6 +53,7 @@ public interface BookRepository {
 	 * Returns all the books sorted by name
 	 * @return
 	 */
-	List<Book> findSortedBooks();	
-	
+	List<Book> findSortedBooks();
+
+	void save(Book book);
 }

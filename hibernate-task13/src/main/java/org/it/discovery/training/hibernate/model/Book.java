@@ -1,5 +1,11 @@
 package org.it.discovery.training.hibernate.model;
 
+import lombok.Getter;
+import lombok.Setter;
+import lombok.ToString;
+import org.hibernate.annotations.Formula;
+
+import javax.persistence.*;
 import java.util.List;
 
 /**
@@ -7,11 +13,29 @@ import java.util.List;
  * @author morenets
  *
  */
+@Getter @Setter @ToString(exclude = "hits")
+@Entity
+@Table
+@NamedQuery(name = Book.FIND_ALL, query = "FROM Book")
+@NamedQuery(name = Book.FIND_BY_NAME, query = "FROM Book WHERE name=:name")
+@NamedQuery(name = Book.FIND_WITH_HITS,
+		query = "FROM Book b inner join fetch b.hits h WHERE size(h) > 1")
 public class Book extends BaseEntity {
+	public static final String FIND_ALL = "Book.findAll";
+
+	public static final String FIND_BY_NAME = "Book.findByName";
+
+	public static final String FIND_WITH_HITS = "Book.findWithHits";
+
+	@Column(nullable = false)
 	private String name;
-	
+
+	@ManyToOne(cascade = CascadeType.PERSIST)
+	@JoinColumn(nullable = false)
 	private Person author;
-	
+
+	@ManyToOne
+	@JoinColumn
 	private Publisher publisher;
 	
 	/**
@@ -20,57 +44,25 @@ public class Book extends BaseEntity {
 	private int year;
 	
 	/**
-	 * Total number of totalPages
+	 * Total number of pages
 	 */
-	private int pages;
-	
+	private int totalPages;
+
+	@Formula("(SELECT count(h.id) FROM HIT h where h.BOOK_ID = id)")
+	private int hitCount;
+
+	@OneToMany(mappedBy = "book", cascade = CascadeType.ALL)
 	private List<Hit> hits;
-
-	public String getName() {
-		return name;
-	}
-
-	public void setName(String name) {
-		this.name = name;
-	}
 
 	public Person getAuthor() {
 		return author;
-	}
-
-	public void setAuthor(Person author) {
-		this.author = author;
 	}
 
 	public Publisher getPublisher() {
 		return publisher;
 	}
 
-	public void setPublisher(Publisher publisher) {
-		this.publisher = publisher;
-	}
-
-	public int getYear() {
-		return year;
-	}
-
-	public void setYear(int year) {
-		this.year = year;
-	}
-
-	public int getPages() {
-		return pages;
-	}
-
-	public void setPages(int pages) {
-		this.pages = pages;
-	}
-
 	public List<Hit> getHits() {
 		return hits;
-	}
-
-	public void setHits(List<Hit> hits) {
-		this.hits = hits;
 	}
 }

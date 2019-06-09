@@ -1,8 +1,8 @@
 package org.it.discovery.training.hibernate.repository;
 
-import java.util.List;
-
 import org.it.discovery.training.hibernate.model.Person;
+
+import java.util.List;
 
 public interface PersonRepository {
 	

@@ -1,8 +1,8 @@
 package org.it.discovery.training.hibernate.repository;
 
-import java.util.List;
-
 import org.it.discovery.training.hibernate.model.Publisher;
+
+import java.util.List;
 
 public interface PublisherRepository {
 	
