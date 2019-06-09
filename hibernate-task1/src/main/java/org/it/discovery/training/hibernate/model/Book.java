@@ -4,6 +4,8 @@ import java.util.List;
 
 import lombok.Getter;
 import lombok.Setter;
+import lombok.ToString;
+import org.hibernate.annotations.Formula;
 
 import javax.persistence.*;
 
@@ -12,7 +14,7 @@ import javax.persistence.*;
  * @author morenets
  *
  */
-@Getter @Setter
+@Getter @Setter @ToString(exclude = "hits")
 @Entity
 @Table
 @NamedQuery(name = Book.FIND_ALL, query = "FROM Book")
@@ -46,6 +48,9 @@ public class Book extends BaseEntity {
 	 * Total number of pages
 	 */
 	private int totalPages;
+
+	@Formula("(SELECT count(h.id) FROM HIT h where h.BOOK_ID = id)")
+	private int hitCount;
 
 	@OneToMany(mappedBy = "book", cascade = CascadeType.ALL)
 	private List<Hit> hits;
