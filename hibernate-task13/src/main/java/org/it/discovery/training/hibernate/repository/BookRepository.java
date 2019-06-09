@@ -1,5 +1,6 @@
 package org.it.discovery.training.hibernate.repository;
 
+import org.it.discovery.training.hibernate.dto.OrderName;
 import org.it.discovery.training.hibernate.model.Book;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.repository.query.Param;
@@ -23,21 +24,23 @@ public interface BookRepository extends JpaRepository<Book, Integer> {
      */
     List<Book> findByName(@Param("name") String name);
 
-//    /**
-//     * Returns all the books where name contains specified text
-//     *
-//     * @param name
-//     * @return
-//     */
-//    List<Book> findLikeName(String name);
+    /**
+     * Returns all the books where name contains specified text
+     *
+     * @param name
+     * @return
+     */
+    List<Book> findByNameLike(String name);
 
-//    /**
-//     * Returns all the books where number of totalPages is greater than totalPages parameter
-//     *
-//     * @param pages
-//     * @return
-//     */
-//    List<Book> findWithMorePages(int pages);
+    /**
+     * Returns all the books where number of totalPages is greater than totalPages parameter
+     *
+     * @param pages
+     * @return
+     */
+    List<Book> findByTotalPagesGreaterThan(int pages);
+
+    List<OrderName> findDTOBy();
 //
 //    /**
 //     * Returns all the books with specified name or totalPages.
