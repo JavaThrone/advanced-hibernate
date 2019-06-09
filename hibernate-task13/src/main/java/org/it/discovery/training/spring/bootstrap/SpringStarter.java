@@ -35,6 +35,10 @@ public class SpringStarter {
                     bookRepository.findByTotalPagesGreaterThan(100));
             System.out.println("Book names " +
                     bookRepository.findDTOBy());
+
+            BookService bookService = context.getBean(BookService.class);
+            System.out.println("Books with name Hibernate 3 = " + bookService.findByName("Hibernate 3"));
+
         }
     }
 

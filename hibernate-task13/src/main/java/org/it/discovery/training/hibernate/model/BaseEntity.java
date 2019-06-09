@@ -14,14 +14,11 @@ public abstract class BaseEntity {
 	@Id
 	@GeneratedValue(generator = "counter")
 	@GenericGenerator(name="counter", strategy = "org.it.discovery.training.hibernate.generator.AutoIncrementIdentifierGenerator")
-	private int id;
+	private Integer id;
 	
 	private LocalDateTime created;
 	
 	private LocalDateTime modified;
 
-	public int getId() {
-		return id;
-	}
-	
+
 }

@@ -41,15 +41,15 @@ public class Book extends BaseEntity {
 	/**
 	 * Publishing year
 	 */
-	private int year;
+	private Integer year;
 	
 	/**
 	 * Total number of pages
 	 */
-	private int totalPages;
+	private Integer totalPages;
 
 	@Formula("(SELECT count(h.id) FROM HIT h where h.BOOK_ID = id)")
-	private int hitCount;
+	private Integer hitCount;
 
 	@OneToMany(mappedBy = "book", cascade = CascadeType.ALL)
 	private List<Hit> hits;
