@@ -6,13 +6,13 @@
 		<provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
 		<properties>
 			<property name="hibernate.dialect" 
-			value="org.hibernate.dialect.HSQLDialect" />
+			value="org.hibernate.dialect.H2Dialect" />
 			<property name="hibernate.hbm2ddl.auto" 
 			value="update" />
 			<property name="hibernate.connection.driver_class" 
-			value="org.hsqldb.jdbc.JDBCDriver" />
+			value="org.h2.Driver" />
 			<property name="hibernate.connection.url" 
-			value="jdbc:hsqldb:mem:products" />
+			value="jdbc:h2:mem:db1" />
 			<property name="hibernate.show_sql" value="true" />
 			<property name="hibernate.cache.region.factory_class"
 				value="org.hibernate.cache.ehcache.EhCacheRegionFactory" />
