@@ -10,7 +10,8 @@
 			<property name="hibernate.ogm.datastore.provider" value="mongodb" />
 			<property name="hibernate.ogm.datastore.host" value="localhost" />
 			<property name="hibernate.ogm.datastore.port" value="27017" />
-			<property name="hibernate.ogm.datastore.database" value="warehouse" />
+			<property name="hibernate.ogm.datastore.database" value="library" />
+			<property name="hibernate.ogm.datastore.create_database" value="true"/>
 		</properties>
 	</persistence-unit>
 </persistence>
