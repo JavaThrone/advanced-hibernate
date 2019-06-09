@@ -22,4 +22,9 @@ public class DefaultBookService implements BookService {
 	public void save(Book book) {
 		bookRepository.save(book);
 	}
+
+	@Override
+	public List<Book> findByName(String name) {
+		return bookRepository.findByName(name);
+	}
 }

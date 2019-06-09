@@ -28,6 +28,7 @@ public class SpringStarter {
             book.getHits().add(hit);
             bookService.save(book);
             System.out.println("Books = " + bookService.findAll());
+            System.out.println("Books with name JPA = " + bookService.findByName("JPA"));
         }
     }
 
